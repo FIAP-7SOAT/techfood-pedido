@@ -7,10 +7,10 @@
 	},
 	"item": [
 		{
-			"name": "Product",
+			"name": "Produtos",
 			"item": [
 				{
-					"name": "New Product",
+					"name": "01 - Cadastrar Produto",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -37,7 +37,7 @@
 					"response": []
 				},
 				{
-					"name": "All Products",
+					"name": "02 - Listar Produtos",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -55,7 +55,7 @@
 					"response": []
 				},
 				{
-					"name": "Product by Id",
+					"name": "03 - Listar Produtos por ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -74,7 +74,7 @@
 					"response": []
 				},
 				{
-					"name": "Product by Category",
+					"name": "04 - Listar Produtos por Categooria",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -99,7 +99,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Product",
+					"name": "05 - Atualizar Produto",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -127,7 +127,7 @@
 					"response": []
 				},
 				{
-					"name": "By Id",
+					"name": "06 - Excluir Produto",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -173,7 +173,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://localhost:8080",
+			"value": "http://localhost:8082",
 			"type": "string"
 		}
 	]
