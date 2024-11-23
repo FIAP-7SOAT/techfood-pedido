@@ -11,6 +11,7 @@ plugins {
 	id("org.springframework.boot") version "3.2.5"
 	id("io.spring.dependency-management") version "1.1.4"
 	id("org.flywaydb.flyway") version "10.13.0"
+	id("jacoco")
 }
 
 group = "br.com.fiap"
@@ -59,6 +60,14 @@ dependencies {
 	testImplementation("io.mockk:mockk:$mockkVersion")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
+
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+	testImplementation("org.mockito:mockito-core:4.0.0")
+	testImplementation("org.jetbrains.kotlin:kotlin-test:1.7.0")  // Kotlin test dependencies
+
+
+
 }
 
 dependencyManagement {
@@ -78,18 +87,41 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+jacoco {
+	toolVersion = "0.8.8" // Specify JaCoCo version
+}
 
-/************************
- * JaCoCo Configuration *
- ************************/
-val exclusions = listOf(
-	"**/*DTO.**",
-	"**/*Entity.**",
-	"**/*Request.**",
-	"**/*Response.**",
-	"**/advice/**",
-	"**/app/**",
-	"**/config/**",
-	"**/domain/**",
-	"**/exception/**",
-)
+tasks.jacocoTestReport {
+	dependsOn("test") // Make sure that tests are executed before generating the report
+
+	reports {
+		xml.required.set(true) // Generate XML report
+		html.required.set(true) // Generate HTML report
+	}
+
+	// Direct configuration of classDirectories without afterEvaluate
+	classDirectories.setFrom(
+		fileTree("$buildDir/classes/kotlin/main") {
+			exclude(
+				"**/app/**", // Excluindo o pacote 'app'
+				"**/dto/**", // DTOs
+				"**/mapper/**", // Mapeadores
+				"**/configuration/**", // Configurações
+				"**/generated/**", // Código gerado
+				"**/web/handler/**"      // Excluir o pacote web.handler
+			)
+		}
+	)
+}
+
+tasks.jacocoTestCoverageVerification {
+	dependsOn(tasks.test)
+
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.80.toBigDecimal() // 80% de cobertura mínima
+			}
+		}
+	}
+}

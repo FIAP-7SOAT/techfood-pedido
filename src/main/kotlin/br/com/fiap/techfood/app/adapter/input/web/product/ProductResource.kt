@@ -5,7 +5,10 @@ import br.com.fiap.techfood.app.adapter.input.web.product.dto.ProductResponse
 import br.com.fiap.techfood.app.adapter.input.web.product.mapper.toDomain
 import br.com.fiap.techfood.app.adapter.input.web.product.mapper.toProductResponse
 import br.com.fiap.techfood.core.domain.enums.CategoryEnum
+import br.com.fiap.techfood.core.domain.vo.ProductVO
 import br.com.fiap.techfood.core.port.input.ProductInputPort
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -16,15 +19,16 @@ class ProductResource(
 ) {
 
     @PostMapping
-    fun create(@RequestBody request: ProductRequest): ProductResponse {
+    fun create(@RequestBody request: ProductRequest): ResponseEntity<ProductResponse> {
         val product = productInput.create(request.toDomain())
-        return product.toProductResponse()
+        val productResponse = product.toProductResponse()
+        return ResponseEntity.status(HttpStatus.CREATED).body(productResponse)
     }
 
     @GetMapping("/{id}")
-    fun getProductById(@PathVariable id: UUID): ProductResponse {
+    fun getProductById(@PathVariable id: UUID): ResponseEntity<ProductVO> {
         val product = productInput.getProductById(id)
-        return product.toProductResponse()
+        return ResponseEntity.ok(product)
     }
 
     @GetMapping("/category")
@@ -40,9 +44,11 @@ class ProductResource(
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: UUID) {
+    fun delete(@PathVariable id: UUID): ResponseEntity<Void> {
         productInput.delete(id)
+        return ResponseEntity.noContent().build()
     }
+
 
     @PutMapping("/{id}")
     fun update(@PathVariable id: UUID, @RequestBody request: ProductRequest): ProductResponse {
