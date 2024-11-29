@@ -1,20 +1,8 @@
 # TechFood-Produtos - Sistema de Autoatendimento para Restaurante FastFood
 
-## Índice
+Este é um projeto do curso de Pós-graduação em Arquitetura de Software da FIAP compreende uma solução possível para um sistema de autoatendimento de restaurante do tipo fast-food, com quiosques ou terminais de autoatendimento, com o objetivo de otimizar o processo de pedidos, pagamento, preparação e entrega de comida..
 
-- [Visão Geral](#visão-geral)
-- [Domain-Driven Development (DDD)](#domain-driven-development-ddd)
-- [Arquitetura](#arquitetura)
-- [Funcionalidades Principais](#funcionalidades-principais)
-- [Principais Tecnologias Utilizadas](#principais-tecnologias-utilizadas)
-- [Como Executar](#como-executar)
-- [Acessando Swagger](#acessando-swagger)
-- [Banco de dados](#banco-de-dados)
-- [Postman Collection](#postman-collection)
-
-### Visão Geral
-
-Este é um projeto do curso de Pós-graduação em Arquitetura de Software da FIAP compreende uma solução possível para um sistema de autoatendimento de restaurante do tipo fast-food, com quiosques ou terminais de autoatendimento, com o objetivo de otimizar o processo de pedidos, pagamento, preparação e entrega de comida.
+Acesse a **[documentação principal](https://github.com/FIAP-7SOAT/techfood-docs)** do projeto para mais detalhes!
 
 Autores membros do Grupo:
 
@@ -22,24 +10,16 @@ Autores membros do Grupo:
 - Pedro Cantarelli - RM355410
 - Vinicius Lopes - RM354901
 
-### Domain-Driven Development (DDD)
+## Índice
 
-A abordagem utilizada para o desenvolvimento foi a DDD, com as seguintes saídas:
+- [Recursos provisionados no Kubernetes](#recursos-provisionados-no-kubernetes)
+- [APIs Disponíveis](#apis-disponíveis)
+- [Como Executar](#como-executar)
+- [Banco de dados](#banco-de-dados)
+- [Acessando Swagger](#acessando-swagger)
+- [Postman Collection](#postman-collection)
 
-- [Glossário ubíquo](https://www.figma.com/board/JpMG7uY03GHnNY92hHxdb3/Lanchonete-de-Bairro?node-id=217-13086&t=TfMJyuLNDTmXck6Z-4)
-- [Event storming](https://www.figma.com/board/JpMG7uY03GHnNY92hHxdb3/Lanchonete-de-Bairro?node-id=0-1&t=TfMJyuLNDTmXck6Z-0)
-- Storytelling
-- Mapa de Contexto
-
-### Arquitetura
-
-O sistema expõe RESTful APIs para aplicações front-end, como terminais de autoatendimento para clientes e interfaces para administradores. Tem como dependência um provedor externo de pagamento, o MercadoPago.
-
-Arquitetura Hexagonal (Ports and Adapters) e Clean Architecture foram adotadas no projeto.
-
-Separamos a aplicação monolito em microsserviços, agora cada serviçoe é responsável por uma parte da aplicação. Os microsserviços permitem que um aplicativo grande seja separado em partes independentes e menores, com cada parte tendo sua própria responsabilidade.
-
-#### Recursos provisionados no Kubernetes
+## Recursos provisionados no Kubernetes
 
 Lista de arquivos YAML com recursos do Kubernetes:
 
@@ -56,9 +36,9 @@ Lista de arquivos YAML com recursos do Kubernetes:
 [Arquitetura Kubernetes](https://www.figma.com/board/JpMG7uY03GHnNY92hHxdb3/Lanchonete-de-Bairro?node-id=0-1&t=W1aQzvEzhq0IOrMn-0)
 ![Arquitetura Kubernetes Produtos](https://cdn.discordapp.com/attachments/1310749229756448779/1311490228816449566/image.png?ex=67490bf4&is=6747ba74&hm=8c5c0b812968f33377ca10abd31f000f13c4f7b7dfddef1fe5f6f66bd66dedb0&)
 
-### Funcionalidades Principais
+## APIs Disponíveis
 
-No atual momento, os requisitos do microsserviço são:
+O TechFood Produtos expõe as seguintes APIs para integração:
 
 - Listar produtos
 - Listar produto
@@ -66,20 +46,6 @@ No atual momento, os requisitos do microsserviço são:
 - Cadastrar produto
 - Atualizar produto
 - Excluir produto
-
-A ideia principal é que os administradores tenha acesso a um painel de controle para gerenciar produtos e categorias.
-
-### Principais Tecnologias Utilizadas
-
-- **Kotlin**
-- **Java 17**
-- **Spring-Boot 3.2.5**
-- **PostgreSQL**
-- **Docker**
-- **Swagger**
-- **Gradle 8**
-- **Kubernetes**
-- **Terraform**
 
 ### Como Executar
 
