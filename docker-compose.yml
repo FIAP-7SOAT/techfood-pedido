@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  postgres:
+  postgres-produtos:
     image: postgres:13.3-alpine
     container_name: postgres-produtos
     ports:
@@ -12,17 +12,26 @@ services:
       - POSTGRES_USER=postgres
     volumes:
       - ./src/main/resources/sql_scripts/:/docker-entrypoint-initdb.d
+    networks:
+      - techfood-network
 
-  app:
+  techfood-produtos:
     container_name: techfood-produtos-app
     build:
-      context: .
+      context: .  # Caminho correto para o serviço
       dockerfile: Dockerfile
     ports:
       - "8082:8082"
     depends_on:
-      - postgres
+      - postgres-produtos
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/techfood-produtos
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-produtos:5432/techfood-produtos
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
+    restart: always
+    networks:
+      - techfood-network
+
+networks:
+  techfood-network:
+    external: true

@@ -5,11 +5,16 @@ spring:
   application:
     name: techfood-produtos
 
+    cloud:
+      config:
+        enabled: false
+
   profiles:
     active: dev
 
   datasource:
-    url: jdbc:postgresql://localhost:5434/techfood-produtos
+#    url: jdbc:postgresql://localhost:5434/techfood-produtos
+    url: jdbc:postgresql://postgres:5432/techfood-produtos
     username: postgres
     password: postgres
 

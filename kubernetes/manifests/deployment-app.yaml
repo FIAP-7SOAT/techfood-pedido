@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: techfood-produtos-app
+  namespace: techfood-produtos
 spec:
   replicas: 1
   selector:
@@ -16,7 +17,7 @@ spec:
         - name: techfood-produtos-app
           image: pcantarelli/techfood
           ports:
-            - containerPort: 8080
+            - containerPort: 8082
           env:
             - name: SPRING_DATASOURCE_URL
               valueFrom:

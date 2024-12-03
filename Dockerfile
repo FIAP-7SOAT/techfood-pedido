@@ -28,7 +28,7 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar techfood-produtos-0.0.1-SNAPSHOT.jar
 
 # Expose the application port
-EXPOSE 8080
+EXPOSE 8082
 
 # Command to run the application
 ENTRYPOINT ["java", "-jar", "techfood-produtos-0.0.1-SNAPSHOT.jar"]
