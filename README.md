@@ -95,7 +95,6 @@ Utilizamos o **[JacocoReport](https://www.jacoco.org/jacoco/trunk/index.html)** 
 1. Comando para gerar o relatório: `./gradlew jacocoTestReport`.
 2. Localização do relatório gerado: `/techfood-produtos/build/reports/jacoco/test/html`
 
-
 ### Banco de dados
 
 Leia a documentação do banco de dados [aqui](docs/database.md)
