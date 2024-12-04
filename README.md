@@ -47,7 +47,7 @@ O TechFood Produtos expõe as seguintes APIs para integração:
 - Atualizar produto
 - Excluir produto
 
-### Como Executar
+## Como Executar
 
 Para executar o sistema, siga as instruções abaixo:
 
@@ -108,18 +108,18 @@ Para vizualizar o Banco de Dados através, recomendamos que baixe o DBeaver ou o
 - Username: postgres
 - Password: postgres
 
-### Acessando Swagger
+## Acessando Swagger
 
 Acesse a documentação da API através do Swagger para começar a interagir com o sistema.
 Para acessar o Swagger utilize a url [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
 
-### Postman Collection
+## Postman Collection
 
 Baixar o Postman ou o API Client de sua preferência e importar a collection:
 
 [API Client Collection](src/main/resources/collection/fiap_techfood_postman_collection.json).
 
-### Principais Tecnologias Utilizadas
+## Principais Tecnologias Utilizadas
 
 - **Kotlin**
 - **Java 17**
